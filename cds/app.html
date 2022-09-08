@@ -3,14 +3,16 @@
 <head>
 				<meta charset="UTF-8">
 				<script src="js.js"></script>
+      <script src="ed.js"></script>
 				<link rel="stylesheet" href="css.css">
+      <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'/>
 				<title>appWeb</title>
 </head>
 <body>
   <div class="full" id="pnt">
 <!-- home buscador  -->
 	 	<div class="free"> 
-		  	<div class="barApp"><b>Propio</b>Link <p>Una app para Developers🇨🇺</p></div>
+		  	<div class="barApp"><b>&lt;Propio</b>Link&gt;<p>Una app para Developers🇨🇺</p></div>
       <input type="search" oninput="buscar()" placeholder="buscador" id="input"> <div class="sp"></div>
    </div>
 <!-- RESULTADOS -->
@@ -18,27 +20,51 @@
    		<div id="resulta"></div>
       <div class="portada center"><div>Developers🇨🇺</div> Crea tu proyecto y dale publicidad fácilmente con tu propio link</div>
       <div id="cto">Cuentas</div>
+      <div class="free center"> <input type="button" onclick="editorD.innerHTML= localStorage.editor;ctl();edi.style.display='inline'" class="bed" value="Editor"></div>
+      <div id="dato" class="free center"> <a onclick="datos()">Acceso a link</a> </div>      
    </div>
    
   </div>
 <!-- fin de la pantalla -->
   <div id="nota"></div>
   <div class="full" id="pageDiv">Cargando web...</div>
+
+<!-- editor web -->
+<div id="edi">
+  <div id="opt"></div>
+  <input type="file" style="display:none" onchange="subir(files[0])" id="mfile">
+  <div id="editorD"></div>
+  <div class="free main">
+    <input type="button" onclick="viewCode()" value="Code">
+    <input type="button" onclick="editorD.innerHTML=localStorage.editor;ctl()" value="View">
+    <input type="button" onclick="mfile.click()" value="Subir">
+    <input type="button" onclick="edi.style.display='none'" value="Salir">
+    <input type="button" onclick="viewCode();usar()" value="Usar">
+  </div>
+</div>
+
+
+
 <script>
- timep=20220908;
+ timep=20220903;
  diario=true;
  //mores
  
  new_user=false;
  actualice=true;
- totDb=10
+ totdb=10
  free=false
+ btn=dato.innerHTML
+
 //cFW77dNSnbniZcVx0wW7nT
-  
 url=[]; if((document.location.href).indexOf('?') > 0 ){ uri=(document.location.href).split('?')[1] ;url=uri.split('&')}
-if(url[0]==undefined){pnt.innerHTML=`<div class="portada center"><div>Download</div>Descarga la apk para android y crea tu propio link html 
-<br><a href="?cFW77dNSnbniZcVx0wW7nT&56&quintadb.com&cmWPT4mSjaxik9amkih8oz">Descargar apk android</a></div>`}else
-{admin=url[1]; keys=url[0]; pgi=url[2]; app=url[3]; cargaDb()}
+if(url[0]==undefined){pnt.innerHTML=`<div class="portada center"><div>Download</div>Descarga la apk para android y crea tu propio link html <br>peso 3.0Mb
+<br><a id="hom" href="?cFW77dNSnbniZcVx0wW7nT&56&quintadb.com&cmWPT4mSjaxik9amkih8oz">Descargar apk android 3Mb</a></div>`}else
+{admin=url[1]; keys=url[0]; pgi=url[2]; app=url[3]; cargaDb(); if(localStorage.us!=""){datos()}}
+pageDiv.style.display="none"
 </script>	
 </body>
 </html>
+
+
+
