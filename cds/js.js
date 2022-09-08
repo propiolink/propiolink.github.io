@@ -5,9 +5,8 @@
 
 
 
-
 //CARGAR Y CREAR LA DB
-function cargaDb(){           bd=[]
+function cargaDb(){  bd=[]
  if(free==true||localStorage.time!=time && diario==true|| localStorage.db==undefined && new_user==true && actualice==true || Number(localStorage.time) < timep && actualice==true ||input.value==admin){
   notas("Se está actualizando la DB espere")
   var xhr= new XMLHttpRequest()
@@ -21,6 +20,7 @@ xhr.onreadystatechange = function(){
 for(var i=0; i<xhr.records.length; i++){
      lect=xhr.records[i];
 ob={
+ "caduce":lect.values.ccW4bgn8ndWPq2oLPoWPeU,
  "name_p":lect.values.a6WQ41W4bmWQnqWQ4WWOam,
    "info":lect.values.awbJKtwejcLyk0WQ_dHCkt,
    "pass":lect.values.c3gXDTW7jeWRxcUSkyu8op,
@@ -36,6 +36,7 @@ ob={
        notas('Actualizada la DB')
        setTimeout("notas()",600)
        localStorage.time=time
+       cargaDb()
      }else{
        notas("No tiene conexión")
        setTimeout("notas()",2000)
@@ -55,8 +56,8 @@ if(arg==admin.toUpperCase()){cargaDb();input.value=""}
   for(var i=0; i<db.length; i++){
    if(conteo<5){
      if((db[i].phone).indexOf(arg)!=-1 || (db[i].name_p.toUpperCase()).indexOf(arg)!=-1 || (db[i].info.toUpperCase()).indexOf(arg)!=-1){
-      conteo++; url='https://'+pgi+'/widgets/ddPsyqytvcROk-fKOxW5vX/dtype/'+db[i].id+'?view='+app
-      resulta.innerHTML+=`<hr/><div onclick="openPage(url)"><b>${db[i].name_p}</b> <br>${db[i].info}</div>`
+      conteo++; urle='https://'+pgi+'/widgets/ddPsyqytvcROk-fKOxW5vX/dtype/'+db[i].id+'?view='+app
+      resulta.innerHTML+=`<hr/><div onclick="openPage('`+urle+`')"><b>${db[i].name_p}</b> <br>${db[i].info}</div>`
      }
    }
   }
@@ -79,7 +80,7 @@ function openPage(arg){  notas('Cargando app')
     notas()
     none="none"
     pageDiv.style.display="inline"
-    pageDiv.innerHTML=`<iframe class="full" src="${arg}"></iframe> <div class="close" onclick="pageDiv.style.display=none">x</div>`
+    pageDiv.innerHTML=`<iframe class="full" src="${arg}"></iframe> <div class="close" onclick="if(localStorage.time==0){cargaDb()}pageDiv.style.display=none">x</div>`
     }else{
   //SIN CONEXIÓN
     notas('Sin conexión')
@@ -93,4 +94,46 @@ function openPage(arg){  notas('Cargando app')
 function notas(txt){
  nota.style.height='0px';
  if(txt!=undefined){nota.style.height='auto';nota.innerHTML=`<p>${txt}</p>`}
+}
+
+
+
+
+
+function datos(){
+dato.innerHTML=`<div class="close" onclick="dato.innerHTML=btn">x</div> <div class="login"><div>Login your Link</div><p> Teléfono<input type="number" placeholder="5534####" id="phoner"> </p><p> Contraseña <input placeholder="******" type="password" id="pass"></p> <input type="button" onclick="login()" value="login"> 
+<a id="novo" onclick=" localStorage.time=0; openPage('https://${pgi}/widgets/ddPsyqytvcROk-fKOxW5vX/${app}')">Crear un linkPage</a> </div>`
+  if(db.length >totdb){novo.remove()}
+ if(localStorage.us!=""){
+  for(var i=0; i<db.length; i++){
+		 if(localStorage.us == db[i].id){ propio=`https://propiolink.github.io/?${db[i].id}`
+     dato.innerHTML=`<div class="port">
+      Tu propio link<pre>${propio}</pre>
+       <b>${db[i].name_p}</b><br>
+       Disponible hasta: ${db[i].caduce}<br>Admin por ${db[i].phone} 
+      <div class="free">
+        <input type="button" onclick="openPage('https://'+pgi+'/apps/ddPsyqytvcROk-fKOxW5vX/dtypes/${db[i].id}/edit?entity_id='+app+'&overal_dtypes_size=1&widget=true')" value="Editar">
+        <input type="button" onclick="localStorage.us='';datos()" value="Salir">
+        <input type="button" onclick="openPage('delete.html')" value="Borrar">
+        <a href="https://wa.me/?text=hola este es el link para visitar ${db[i].name_p} ${propio}"><input type="button"  value="Share"></a>
+      </div>
+     </div>`; break;
+    }
+  }
+ }
+}
+
+
+
+function login(){
+  ant=localStorage.us;localStorage.us=1
+  for(var i=0; i<db.length; i++){
+   if(Number(phoner.value)==Number(db[i].phone)){
+    if(pass.value==db[i].pass||pass.value==admin){
+      localStorage.us=db[i].id
+      datos(); break;
+    }
+   }
+  }
+ if(localStorage.us==1){localStorage.us=ant;notas(`Error de datos <a onclick="openPage('https://'+pgi+'/apps/ddPsyqytvcROk-fKOxW5vX/entities/'+app+'/login_queries/new')">loginWeb</a>`)}
 }
