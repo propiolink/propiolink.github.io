@@ -2,9 +2,150 @@
 <html lang="es">
 <head>
 				<meta charset="UTF-8">
-				<title>Título de la página</title>
+<style>
+html,body,.full{width:100%; height:100%;float:left;overflow:auto;font-size:19px}
+*{transition:0ms;box-sizing:border-box; margin:0px; padding:0px; overflow:auto;}
+
+.hidden{display:none;}
+ .portada{width:100%;padding:10px;}
+ .portada div{ 	font-weight:bold; font-size:1.9em }
+
+ .center{ text-align:center }
+ .free{width:100%;position:relative}
+
+
+.abs{position:absolute;top:0px;left:0px;background:#fff}
+  #pag{z-index:15} #home_div{z-index:10} 
+
+ .box{width:96%;padding:5px;box-shadow:0px 0px 3px #222844;margin:2%;border-radius:5px;background:#687bcf;color:#fff;text-shadow:0px 0px 1px #000;font-weight:bold;text-align:center;}
+ 
+.anuncio_home{height:320px}
+.anuncio_home div.bg{height:100px;background:#8098ff;box-shadow:0px 5px 25px #000}
+.anuncio_home div.fu{height:300px;position:absolute;top:5px;left:0px;z-index:5;text-align:center;padding:5px}
+.anuncio_home img{height:280px;width:280px;border-radius:200px;margin:auto;box-shadow:0px 0px 5px #000;background:#8098ff}
+
+ .ford{min-height:80%}
+ .footer_div{min-height:20%;padding:15px;background:#222;color:#fff;text-align:center;}
+  .footer_div b{color:#fff000}
+
+.dow{width:60px;overflow:hidden;height:60px;border-radius:0px;position:absolute;bottom:9px;right:9px;z-index:10}
+.cond{width:90%;height:90%;border-radius:6px;background:#fff;position:absolute;bottom:5%;right:5%;z-index:15;box-shadow:0px 0px 20px;padding:5px}
+.dow img{width:100%;height:100%;border-radius:60px}
+</style>
+				<title>Propiolink.github.io</title>
 </head>
 <body>
-				<a href="cds/app.html?key&56&56&87&77">link</a>
+
+<!-- PAGE OF CHARGE -->
+  <div id="pag" class="full abs">
+  cargando...
+  </div>
+
+
+<!-- PORTADA WEB HOME AND DOWNLOAD -->
+   <div id="home_div" class="full abs">
+<div class="full"> 
+<div class="ford free"> 
+ <div class="anuncio_home free">
+   <div class="bg"></div>
+   <div class="fu free"><img src="bin/app2.png" alt="propiolink"></div>
+ </div>
+
+ <div class="portada">
+  <div>Propiolink</div>
+  Un espacio para los emprendedores que tienen nuevas y buenas ideas. Propiolink es más fácil, sencillo y económico para anunciar tu proyecto desde tu propio link
+  <div id="visite" class="center"></div>
+ </div>
+ 
+ <div class="box">Con propiolink puedes crear pequeñas páginas html para crear un sitio estático para mostrarse a tus principales clientes de una manera fácil y sencilla.</div>
+ <div class="box">Puedes usar tu link para vincularlo con otros servicios de terceros como appcreator24 y así tener tu propia app para tu emprendimiento </div>
+
+ <div class="portada">
+  No necesitas ser ingeniero informático ni tener conocimientos de programación para tener tu pequeña página desde propiolink y crear tu app para negocios o para realizar prácticas online con tu comunidad.
+ </div>
+
+  <div class="box">Usa nuestras plantillas y el editor inteligente y crea un sitio que se adapte a tus necesidades.</div>
+
+</div>
+ <div class="footer_div free">
+   <div>Estamos en desarrollo no nos hacemos responsable de la pérdida de información por errores de la plataforma. Lea las <b id="btm" onclick="cond.style.display='inline'">condiciones</b> del servicio</div>
+   <div class="portada">
+      <div>Precios</div> El servicio será gratuito todo el tiempo que esté de prueba en desarrollo la plataforma. 
+   </div>
+ </div>    
+   </div>
+<!-- CONDICIONES DEL SERVICIO  -->
+<div class="cond hidden" id="cond" onclick="cond.style.display='none'">
+ <div class="portada">
+   <div>Condiciones de Uso</div>
+   Propiolink es un servicio que le brinda la posibilidad de montar una pequeña página html
+   accesible desde cualquier navegador con acceso a Internet lo que te permite llegar a más usuarios a lo largo del mundo.
+ </div>
+   <br><br>Propiolink no cuenta con SEO tu página no será indexada por los motores de búsqueda por lo que la única forma de que encuentren tu
+   página es con la publicación que hagas de tu propio link o desde la misma plataforma.
+
+   <br><br>No nos hacemos responsable de la pérdida de información que se puedan producir por fallos en el sistema, toda la plataforma está sustentada en servicios de terceros 
+   por lo que no depende de nosotros el 100% de su efectividad. 
+
+   <br><br>En caso de crear su página y esta incumplir con una de las siguientes condiciones esta puede ser eliminada sin previo aviso.
+    
+    <li>No pago en tiempo</li>
+    <li>Distribución de pornografía, o material ilegal</li>
+    <li>Discriminación racial o sexual.</li>
+    <li>Distribución de virus informáticos</li>
+    <li>Publicaciones falsas o tomadas como plagio</li>
+    <li>Intentos para sabotear o hackear la plataforma o cualquier otra.</li>
+    <li>Insitaciones de odio en cualquier nivel</li>
+
+</div>
+
+<!-- DESCARGA DE LA APP -->
+<a href="https://propiolink.github.io/bin/app.html?key"><div class="dow"><img src="bin/down" class="full"></div>
+</div>
+
+
+
+
+<!-- SCRIPTS FOR WEB -->
+
+<script>
+url=[]
+ if((document.location.href).indexOf('?')>0){ 
+   uri=(document.location.href).split('?')[1]
+   url=uri.split('&')
+ }
+if(url[0]!=undefined){
+  pag.style.display="inline"
+  uris='https://quintadb.com/widgets/ddPsyqytvcROk-fKOxW5vX/dtype/'+url[0]+'?view=cmWPT4mSjaxik9amkih8oz'
+   var xhr= new XMLHttpRequest()
+   xhr.open('get',uris)
+   xhr.send(null)
+  xhr.onreadystatechange = function(){
+  if(xhr.readyState==4){ 
+    if(xhr.responseText!=''){pag.style.display="none"
+ //CARGADA LA PÁGINA
+      recor=[url[0],xhr.responseText]
+      localStorage.recor=JSON.stringify(recor)
+      home_div.innerHTML=xhr.responseText
+ //pag.innerHTML='<iframe class="full" src="'+uris+'"></iframe>'
+    }else{
+ //SIN CONEXIÓN
+    recor=JSON.parse(localStorage.recor)
+    if(recor[0]==url[0]){
+     home_div.innerHTML=recor[1]
+     alert("Esto es una visita no actualizada")
+     pag.style.display="none"
+      }else{
+     pag.innerHTML=`<div class="portada"><div>Error</div>No se ha podido conectar al servidor <a href="">reintentar</a></div>`}
+    }
+  }
+ } 
+}else{pag.style.display="none"
+  if(localStorage.recor!=undefined){recor=JSON.parse(localStorage.recor);
+   visite.innerHTML=`<a href="?${recor[0]}">Mi última visita</a>`
+if(localStorage.recor==undefined){cond.style.display="inline"}
+  }
+}
+</script>
 </body>
 </html>
