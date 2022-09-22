@@ -1,0 +1,45 @@
+html,body,.full{width:100%; height:100%;float:left;overflow:auto;font-size:19px}
+*{transition:0ms;box-sizing:border-box; margin:0px; padding:0px; overflow:auto;}
+
+
+.hidden{display:none;}
+.portada{width:100%;padding:10px;}
+.portada div{ 	font-weight:bold; font-size:1.9em }
+
+.center{ text-align:center }
+.free{width:100%;position:relative}
+.text{padding:5px}
+.b{font-weight:bolder}
+
+.plant{width:250px;height:150px;color:#000; overflow:hidden; box-shadow:0px 0px 5px; border-radius:5px;margin:10px;float:left;}
+.plant img{width:100px;height:150px;float:left;overflow:hidden}
+.plant div{width:150px;float:right;padding:5px;font-size:18px}
+
+
+#registro{background:#fff;padding:15px;position:absolute;left:0px;top:0px;z-index:50}
+#registro input{width:90%;margin:1% 5%; font-size:1.4em}
+
+#us input{font-size:1.5em;}
+
+
+ #edi img{width:100%;height:100%;float:left}
+ #edi{position:absolute;top:0px;left:0%;z-index:15;background:#fff;display:none;width:100%;height: 100%;;margin:0%;padding:0px;}
+ #editorD{width: 100%;height: calc( 100% - 50px);position:relative }
+ #edi .main input{width:20%;height:50px;float:left}
+textarea.editor{background:#111;color:#fff;padding:5px;}
+#opt{width:60%;display:none;text-align:left;padding:5px;border-radius:5px;z-index:50;box-shadow:0px 0px 10px #444; position:absolute;top:5px;background:#dcdcdc;right:5px;max-height:90%;}
+#opt textarea{width:100%;text-align:left;padding:5px;float:none}
+#opt .btns{width:48%;padding:2px;border:solid 1px #333;float:left;margin:1%}
+#opt div{width:100%;float:left}
+#opt div input{width:50%;float:right}
+#opt div.add{width:100%;float:left;background:#fff;border-bottom:solid 1px #343;padding:5px;}
+
+.bgv{background:#00ff03}
+.bgr{background:#ff2a15}
+
+
+ #pageDiv,#pag{position:absolute;top:0px;left:0px;z-index:18;background:#fff;}
+  .close{text-align:center;position:absolute;color:#fff;padding:0px;font-size:25px;overflow:hidden;right:5px;bottom:5px;z-index:5;width:30px;height:30px;border-radius:20px;background:#ff0a00;box-shadow:0px 0px 5px #000}
+  iframe{border:none;width:100%;height:100%}
+
+
