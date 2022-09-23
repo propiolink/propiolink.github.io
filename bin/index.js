@@ -7,7 +7,7 @@ url=[]
    url=uri.split('&')
  }
    keys=url[0]
-// keys="cFW77dNSnbniZcVx0wW7nT";
+   keys="cFW77dNSnbniZcVx0wW7nT";
 
 //CARGAR Y CREAR LA DB
 function cargaDb(){  bd=[]; 
@@ -25,14 +25,10 @@ for(var i=0; i<xhr.records.length; i++){
      lect=xhr.records[i];
 ob={
  "caduce":lect.values.ccW4bgn8ndWPq2oLPoWPeU,
- "name_p":lect.values.a6WQ41W4bmWQnqWQ4WWOam,
-   "info":lect.values.awbJKtwejcLyk0WQ_dHCkt,
    "pass":lect.values.c3gXDTW7jeWRxcUSkyu8op,
   "phone":lect.values.btWR5CFSngqyo2ASoAW6bE,
      "id":lect.id,
-   "fcre":lect.created_at,
-   "fupd":lect.updated_at,
- },
+  },
   bd.splice(i,0,ob);
   localStorage.db=JSON.stringify(bd)
 }
@@ -74,8 +70,9 @@ if(localStorage.id!=undefined && localStorage.id!=0){
    <pre class="text b">https://propiolink.github.io?${localStorage.id}</pre>
    <div class="free center">
      <input type="button" value="Visita" onclick="openPage('https://propiolink.github.io?${localStorage.id}')">
-     <input type="button" value="Editor" onclick="edi.style.display='inline'">
+     <input type="button" value="Editor" onclick="edi.style.display='inline';editorD.innerHTML=localStorage.editor;ctl()">
      <input type="button" value="Editar" onclick="openPage('https://quintadb.com/apps/ddPsyqytvcROk-fKOxW5vX/dtypes/${localStorage.id}/edit?entity_id=cmWPT4mSjaxik9amkih8oz?&overal_dtypes_size=1&widget=true')">
+     <input type="button" value="Salir" onclick="if(window.confirm('Seguro que desea cerrar su acceso Esto puede provocar errores en su link  hágalo sólo por problemas de seguridad. Puede que la base de datos ya no esté accesible desde su dispositivo. Si está seguro de cerrar la session presione Ok o Aceptar')){localStorage.us=1;cargaDb()}">
    </div>
 `
 }
@@ -86,22 +83,23 @@ if(pass_n.value!="" &&phone_n.value!="" && user_n.value!=""){
    if(Number(phone_n.value)==Number(db[i].phone)){
     if(pass_n.value==db[i].pass||pass_n.value==adm){
       localStorage.id=db[i].id
- localStorage.phone=phone_n
+ localStorage.phone=phone_n.value
  localStorage.us=2
  registro.style.display="none" 
- localStorage.db=JSON.stringify([])
+ //localStorage.db=JSON.stringify([])
  cargaDb()
       break;
     }else{alert("La contraseña es incorrecta");break; }
    }
 if(i==db.length-1){alert("Registrado");
- localStorage.phone=phone_n
+ localStorage.phone=phone_n.value
+localStorage.clave=pass_n.value
  localStorage.id=0
- localStorage.use=user_n
+ localStorage.user=user_n.value
  localStorage.us=2
  registro.style.display="none" 
  cargaDb()
- localStorage.db=JSON.stringify([])
+ //localStorage.db=JSON.stringify([])
 }
   }
 }}
@@ -118,7 +116,7 @@ function openPage(arg){
   //CONECTADO A LA PAGE
      none="none"
     pageDiv.style.display="inline"
-    pageDiv.innerHTML=`<iframe class="full" src="${arg}"></iframe> <div class="close" onclick="if(localStorage.time==0){cargaDb()}pageDiv.style.display=none">x</div>`
+    pageDiv.innerHTML=`<iframe class="full" src="${arg}"></iframe> <div class="close" onclick="if(novo==1){cargaDb()}pageDiv.style.display=none">x</div>`
     }else{
   //SIN CONEXIÓN
     alert("sin conexión")
@@ -129,4 +127,4 @@ function openPage(arg){
 
 
 
-if(url[0]==undefined){pnt.innerHTML='err.uknown'}
+//if(url[0]==undefined){pnt.innerHTML='err.uknown'}
