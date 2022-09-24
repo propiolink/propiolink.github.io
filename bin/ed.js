@@ -17,7 +17,7 @@ tq=0
 function toque(ob){ 
 if(tq==0){tq=1; setTimeout("tq=0",500)
   obj=ob;opt.style.display="inline";
-  salid=`<div onclick="if(window.confirm('Seguro que desea borrar este elemento no se puede desacer') && obj.id!='blok'){obj.remove(); opt.style.display='none';grd()}" class="btns bgr">Delete</div>   <div onclick="opt.style.display='none';opt.innerHTML='';" class="btns bgv">Done</div>`
+  salid=`<div onclick="if(window.confirm('Seguro que desea borrar este elemento no se puede desacer') && obj.id!='blok'){obj.remove(); opt.style.display='none';opt.innerHTML='';grd()}" class="btns bgr">Delete</div>   <div onclick="opt.style.display='none';opt.innerHTML='';" class="btns bgv">Done</div>`
   fontS=`<div> Font-Size <input oninput="obj.style.fontSize=this.value;grd()" value="${obj.style.fontSize}"></div>`
   fontW=`<div> Font-weight <input oninput="obj.style.fontWeight=this.value;grd()" value="${obj.style.fontWeight}"></div>`
   textA=`<div> text-align <input oninput="obj.style.textAlign=this.value;grd()" value="${obj.style.textAlign}"></div>`
@@ -33,12 +33,15 @@ if(tq==0){tq=1; setTimeout("tq=0",500)
  if(ob.tagName=='IMG'){opt.innerHTML=`<input class="free" type="url" oninput="obj.src=this.value;grd()"  value="${obj.src}"> ${width+height+fontS+fontW+textA+paddi+color+background+floate+margin+salid}`}
  if(ob.tagName=='P'){opt.innerHTML=`<textarea rows="3" oninput="obj.innerHTML=this.value;grd()"> ${obj.innerHTML} </textarea> ${width+height+fontS+fontW+textA+paddi+color+background+floate+margin+salid}`}
  if(ob.tagName=='DIV'){opt.innerHTML=`añadir
+   <div onclick='adds(4)' class="add">DIV</div>
    <div onclick='adds(0)' class="add">Párrafo</div>
    <div onclick='adds(2)' class="add">Imagen</div>
-   <div onclick='adds(1)' class="add">Post1</div>
- `+width+height+paddi+margin+floate+background+salid}
+   <div onclick='adds(1)' class="add">Post</div>
+   <div onclick='adds(3)' class="add">Artículo</div>
+ `+width+height+paddi+textA+margin+floate+background+salid}
  }
 opt.innerHTML+=`<style>#editorD .elem{padding:15px;border:dotted 1px}</style>`
+if(obj.id=='not'){opt.innerHTML=''; opt.style.display="none"}
 }
   
 function grd(){localStorage.editor=editorD.innerHTML}
@@ -49,10 +52,16 @@ function adds(nu){
   if(nu==0){text=`<p class="elem">tu párrafo</p>`} 
 //POST
   if(nu==1){text=`<div class="elem" style="width:96%;padding:10px 5px;margin:2%;border-radius:5px;box-shadow:0px 0px 10px #000;"><p style="font-weight:bolder;font-size:1.6em" class="elem">tu título</p><p style="" class="elem">tu párrafo</p></div>`} 
-//POST
-  if(nu==2){text=`<img src="" class="elem" style="width:100%;height:100%;float:left">`} 
+//IMG 
+  if(nu==2){text=`<img src="https://i.pinimg.com/736x/0b/5e/21/0b5e21731fda3f16a852908e3a5a528b.jpg" class="elem" style="width:100%;height:auto;float:left">`} 
+//ARTÍCULO 
+  if(nu==3){ fecha= new Date();hora=fecha.getHours();segundo=fecha.getSeconds(); dia=fecha.getDate();if(dia<10){dia='0'+dia} minuto=fecha.getMinutes(); mes=fecha.getMonth()+1;if(mes<10){mes='0'+mes} ano=fecha.getFullYear(); time=Number(ano+''+mes+''+dia+''+hora+''+minuto+''+segundo)
+     text=`<div class="elem art_list"><p class="elem title">Artículo Tittle</p><div class="btn_art elem" onclick="art${time}.style.display='inline'" id="not">></div><div class="art_result full" id="art${time}"><div class="elem full content" id="blok"><div class="closer elem" onclick="art${time}.style.display='none'" id="not"><</div></div></div></div>`}
+//DIV
+  if(nu==4){text=`<div class="elem" style="width:100%;min-height:2px;float:left"></div>`} 
 
-obj.innerHTML+=text;grd();opt.style.display="none"
+
+obj.innerHTML+=text;grd();opt.style.display="none";opt.innerHTML='';
 ctl()}
 
 
