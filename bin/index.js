@@ -53,9 +53,9 @@ if(localStorage.us==1){
 
 for(var i=0; i<plantillas_n.length-1; i++){
 plantillas_sp.innerHTML+=`
- <a href="plantillas/nup${plantillas_n[i].fto}.html"><div class="plant"> <img src="img/${plantillas_n[i].fto}"> <div> <b>${plantillas_n[i].nam}</b><br> ${plantillas_n[i].des}</div> </div></a>`
+<div class="plant" onclick="openPage('plantillas/${plantillas_n[i].url}.html')"><b>${plantillas_n[i].nam}</b><br> ${plantillas_n[i].des}</div>`
 }
-plantillas_sp.style.width=(271*(plantillas_n.length-1))+"px"
+plantillas_sp.style.width=(221*(plantillas_n.length-1))+"px"
 disponibles.innerHTML=`Plantillas Disponibles ${plantillas_n.length-1}`
 
 
