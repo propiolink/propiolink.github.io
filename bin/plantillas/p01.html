@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'/>
+				<meta charset="UTF-8">
+ <link rel="stylesheet" href="plantillas.css">
+				<title>Título de la página</title>
+<style>
+html,body,.full{width:100%; height:100%;float:left;overflow:auto;font-size:19px}
+*{transition:0ms;box-sizing:border-box; margin:0px; padding:0px; overflow:auto;}
+</style>
+</head>
+<body>
+
+<div class="portada_p" id="bu">
+ <div class="title">MiniBlog</div>
+ Crea un miniBlog con propiolink y escribe sobre lo que más te apasiona, tu empresa o tu proyecto <br> Esta plantilla cuenta con una presentación de portada y una página para organizar tus artículos y otros contenidos
+  <br><br>
+<input type="button" onclick="ver()" value="Ver">
+<input type="button" onclick="usar()" value="Usar">
+</div>
+
+
+		
+<div id="lap"></div>
+<script>
+ plantilla=`negami_c<div class="elem" style="width: 94%; padding: 10px 5px; margin: 3%; border-radius: 5px; box-shadow: rgb(0, 0, 0) 0px 0px 10px; background: rgb(255, 255, 255); position: absolute; bottom: 0px; left: 0px; z-index: 9;"><p class="elem" style="font-weight: bold; font-size: 1.5em; text-align: center; background: rgb(255, 255, 255);">Título del Blog</p><p class="elem" style="font-size: 14px; width: 100%; text-align: center;">Descripción; de que trata tu blog</p></div> <div class="elem full" id="blok" style="position:absolute;top:0px;left:0px;z-index:5"><div class="elem" id="not" style="margin: 2%; border-radius: 50px; box-shadow: rgb(0, 0, 0) 0px 0px 10px; background: rgb(255, 255, 255); width: 50px; font-size: 40px; text-align: center; float: right; height: 50px; padding: 0px;overflow:hidden;" onclick="aboutM.style.display='inline'"> > </div></div> <div class="full" id="aboutM" style="position: absolute; top: 0px; left: 0px; z-index: 10; background: rgb(255, 255, 255); display: none; overflow: auto;"><div class="elem" id="not" style="margin: 2%; border-radius: 50px; box-shadow: rgb(0, 0, 0) 0px 0px 10px; background: rgb(255, 255, 255); width: 50px; font-size: 40px; text-align: center; float: right; height: 50px; padding: 0px;overflow:hidden;position:absolute;top:0px;right:0px;z-index:10;" onclick="aboutM.style.display='none'"> < </div><div class="elem full" id="blok" style="overflow: auto; float: left;"><p class="elem" style="width: 100%; font-weight: bold; padding: 2px 5px; float: left; font-size: 30px;" id="blok"> Autor o Tema</p><p class="elem" style="font-size: 16px; float: left; padding: 0px 5px; width: 100%;" id="blok">nota relevante </p></div></div>`
+ function ver(){
+  lap.innerHTML=plantilla+`<input type="button" onclick="lap.style.display='none'" value="Salir" class="sss">`
+  lap.style.display="inline"
+ }
+
+ function usar(){
+  if(window.confirm('Si presiona aceptar o Ok todo lo que tenga en el editor será remplazado por la nueva plantilla y no se podrá deshacer')){
+   localStorage.editor=plantilla
+   bu.innerHTML=`<div class="portada"><div class="title">Listo</div>Se ha copiado con éxito su nueva plantilla</div>`
+  }
+ }
+
+</script>
+</body>
+</html>
