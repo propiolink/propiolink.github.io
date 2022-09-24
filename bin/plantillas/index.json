@@ -1,4 +1,4 @@
 plantillas_n=[
-  {'nam':'Propiolink','des':'Tu primer espacio en la app','fto':'pla01'},
-  {'nam':'','des':'','fto':''}
+  {'nam':'MiniBlog','des':'Escribe un pequeño blog sobre un tema que te guste','url':'p01'},
+  {'nam':'','des':'','url':''}
 ]
