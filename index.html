@@ -123,7 +123,7 @@ url=[]
  }
 if(url[0]!=undefined){
   pag.style.display="inline"
-  uris='https://json.extendsclass.com/bin/'+url[0]
+  uris='https://jsonblob.com/api/'+url[0]
    var xhr= new XMLHttpRequest()
    xhr.open('get',uris)
    xhr.send(null)
@@ -155,15 +155,6 @@ if(localStorage.recor==undefined){cond.style.display="inline"}
 }
 
 
-if ('serviceWorker' in navigator) {
-   window.addEventListener('load', function() {  
-      navigator.serviceWorker.register('/sw.js').then(function(registration) {   
-     // Si es exitoso   
-    console.log('SW registrado correctamente');  
-    }, function(err) {    
-    // Si falla    
-    console.log('SW fallo', err);  
-   });   }); }
 
 </script>
 </body>
